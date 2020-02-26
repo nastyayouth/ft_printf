@@ -3,35 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eestell <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 20:27:20 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/18 03:47:29 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/26 05:59:48 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h>
-int		ft_printf(const char * format, ...)
-{
-	char			*traverse;
-	unsigned int	i;
-	char			*s;
-	va_list			argv;
-	va_start(argv, format);
-	for (traverse = format; *traverse != '\0'; traverse++)
-	{
-		while (*traverse != '%')
-		{
-			write(1, traverse, 1);
-			traverse++;
-		}
-	}
-	return (1);
-}
 
-int main()
+void	ft_printf(char *in_print, ...)
 {
-	ft_printf("ertyui %d");
+	va_list		argv;
+	char		*trav;
+	char		*s;
+	t_printf	*v_format = NULL;
+	char		*str;
+
+	trav = in_print;
+	va_start(argv, in_print);
+	//puts(in_print);
+	str = ft_strdup(in_print);
+	ft_find_format(str);
+	printf("%s",v_format->comment);
+	while (trav != '\0')
+	{
+		s = va_arg(argv, char* );
+		if (trav == '\0' || s == NULL)
+		{	
+			va_end(argv);
+			break;			
+		}
+		puts(s);
+		trav++;
+	}	
+}	
+
+int		main()
+{
+	ft_printf("1111","2222","3333", "4444");
 	return (0);
 }
