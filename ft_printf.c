@@ -6,7 +6,7 @@
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 20:27:20 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/26 05:59:48 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/27 10:16:41 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,36 @@
 void	ft_printf(char *in_print, ...)
 {
 	va_list		argv;
-	char		*trav;
+	char		*trav = NULL;
 	char		*s;
-	t_printf	*v_format = NULL;
 	char		*str;
+	int			i;
 
+	i = 0;
 	trav = in_print;
 	va_start(argv, in_print);
 	//puts(in_print);
 	str = ft_strdup(in_print);
-	ft_find_format(str);
-	printf("%s",v_format->comment);
-	while (trav != '\0')
+	//ft_find_format(str);
+	while (trav != '\0' || s == NULL) /*you must test number of %*/
 	{
-		s = va_arg(argv, char* );
-		if (trav == '\0' || s == NULL)
-		{	
-			va_end(argv);
-			break;			
+		while (str[i] != '%')
+		{
+			write(1, &str[i], 1);
+			i++;
 		}
-		puts(s);
+		i++;
+		printf("\n\n");
+		s = va_arg(argv, char*);
+		if (trav == '\0' || s == NULL)
+		{
+			va_end(argv);
+			break;
+		}
+		ft_putstr(s);
+		ft_putchar('\n');
 		trav++;
-	}	
-}	
-
-int		main()
-{
-	ft_printf("1111","2222","3333", "4444");
-	return (0);
+	}
 }
+
+
