@@ -6,7 +6,7 @@
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 06:46:12 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/28 07:00:59 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/29 08:19:46 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	    ft_putstr(char const *s);
 char	    *ft_strdup(const char *s1);
 size_t		ft_strlen(const char *s);
 void        ft_print_real(char *format, char *str);
-void        ft_converttoformat(char *format, void *str);
+void        ft_converttoformat(char *format, va_list argv);
 int	        ft_atoi(const char *str);
+char		*ft_itoa(int n);
+char	    *ft_strnew(size_t size);
 
 #endif

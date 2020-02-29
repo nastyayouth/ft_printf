@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 06:45:58 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/29 08:09:07 by eestell          ###   ########.fr       */
+/*   Created: 2019/09/15 14:38:24 by eestell           #+#    #+#             */
+/*   Updated: 2020/02/29 08:20:58 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int		main()
+char	*ft_strnew(size_t size)
 {
-	ft_printf("1  %s22  %s333 %d", "one", "two", 20000);
-	return (0);
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = (char*)malloc(sizeof(char) * (size + 1));
+	if (!str)
+		return (NULL);
+	while (i <= size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
