@@ -6,29 +6,21 @@
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 20:27:20 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/29 08:12:39 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/29 09:38:17 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 #include <string.h>
 
-void	ft_voidtoint(void *str)
-{
-	//int		i;
-
-	//write(1, &str[0],1);
-
-}
-
-void		ft_converttoformat(char *format, va_list argv)
+void			ft_converttoformat(char *format, va_list argv)
 {
 	int			i;
 	int			*number;
 	char		*s;
 	intmax_t	d;
+	char		*buf;
 
 	i = 0;
 	while (format[i] != '%' && format[i] != '\0')
@@ -44,15 +36,16 @@ void		ft_converttoformat(char *format, va_list argv)
 		ft_putstr(s);
 	}
 	if (format [i] == 'd')
-	{
-		
-		d =  (signed int)va_arg(argv, int*);
-		printf("%jd", d);
+	{		
+		d =  (unsigned int)va_arg(argv, int*);
+		buf = ft_itoa(d);
+		ft_putstr(buf);
+		free(buf);
 	}
 	
 }
 
-void	ft_printf(char *trav, ...)
+void			ft_printf(char *trav, ...)
 {
 	va_list		argv;
 	char		*str;
@@ -74,7 +67,10 @@ void	ft_printf(char *trav, ...)
 		i++;
 		start = i;
 	}
+	
 	va_end(argv);
+	free(str);
+	//free(&trav);
 }
 
 

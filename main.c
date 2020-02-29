@@ -6,13 +6,13 @@
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 06:45:58 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/29 08:09:07 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/29 08:29:47 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 int		main()
 {
-	ft_printf("1  %s22  %s333 %d", "one", "two", 20000);
+	ft_printf("1  %s22  %s333 %d  %d  %d", "one", "two", 20000, 300, 40);
 	return (0);
 }

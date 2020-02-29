@@ -6,7 +6,7 @@
 /*   By: eestell <eestell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:50:59 by eestell           #+#    #+#             */
-/*   Updated: 2020/02/29 08:21:20 by eestell          ###   ########.fr       */
+/*   Updated: 2020/02/29 09:12:16 by eestell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static char		*ft_itoa_neg(int n)
 	size_t		count;
 	int			number2;
 
-	if (n == (-2147483648))
-		return (ft_strdup("-2147483648"));
+	//if (n == (-2147483648))
+		//return (ft_strdup("-2147483648"));
 	n = n * (-1);
 	number2 = n;
 	count = ft_count(n);
@@ -58,8 +58,8 @@ char			*ft_itoa(int n)
 
 	if (n < 0)
 		return (ft_itoa_neg(n));
-	if (n == 2147483647)
-		return (ft_strdup("2147483647"));
+	//if (n == 2147483647)
+		//return (ft_strdup("2147483647"));
 	number2 = n;
 	count = ft_count(n);
 	if (!(number = ft_strnew(count)))
